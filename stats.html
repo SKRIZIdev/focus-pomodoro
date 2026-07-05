@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stats — FocusFlow</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html">🍅 FocusFlow</a>
+  <nav>
+    <a href="index.html">Timer</a>
+    <a href="stats.html" class="active">Stats</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
+<main class="wrap">
+  <h1 class="title">Focus stats</h1>
+  <div class="cards">
+    <div class="scard"><b id="today">0</b><small>sessions today</small></div>
+    <div class="scard"><b id="total">0</b><small>sessions all-time</small></div>
+    <div class="scard"><b id="mins">0</b><small>minutes focused</small></div>
+  </div>
+  <h2 class="title" style="font-size:1.3rem;margin-top:30px">Last 7 days</h2>
+  <div class="chart" id="chart"></div>
+</main>
+<footer class="foot">FocusFlow · SKRIZIdev</footer>
+<script src="js/stats.js"></script>
+</body>
+</html>

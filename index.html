@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FocusFlow — Pomodoro Timer</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html">🍅 FocusFlow</a>
+  <nav>
+    <a href="index.html" class="active">Timer</a>
+    <a href="stats.html">Stats</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
+<main class="app">
+  <div class="modes" id="modes">
+    <button class="on" data-m="focus" data-min="25">Focus</button>
+    <button data-m="short" data-min="5">Short break</button>
+    <button data-m="long" data-min="15">Long break</button>
+  </div>
+
+  <div class="clock" id="clock">
+    <svg viewBox="0 0 200 200"><circle class="track" cx="100" cy="100" r="90"/><circle class="prog" id="ring" cx="100" cy="100" r="90"/></svg>
+    <div class="time" id="time">25:00</div>
+  </div>
+
+  <div class="controls">
+    <button class="btn primary" id="startBtn">Start</button>
+    <button class="btn" id="resetBtn">Reset</button>
+  </div>
+
+  <section class="tasks">
+    <h3>Tasks</h3>
+    <div class="addbar"><input id="taskInput" placeholder="What are you working on?" maxlength="60"><button class="btn small" id="addTask">Add</button></div>
+    <ul id="taskList"></ul>
+  </section>
+</main>
+<footer class="foot">FocusFlow · SKRIZIdev</footer>
+<script src="js/pomodoro.js"></script>
+</body>
+</html>

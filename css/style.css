@@ -1,0 +1,48 @@
+:root{
+  --bg:#171216; --panel:#241b21; --line:#3a2c34; --txt:#f6eef2; --muted:#b39aa6; --accent:#fb7185;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--txt);line-height:1.5}
+a{color:inherit;text-decoration:none}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:15px 26px;background:var(--panel);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+.brand{font-weight:700}
+nav a{color:var(--muted);margin-left:20px;font-size:.93rem}
+nav a:hover,nav a.active{color:var(--accent)}
+.app{max-width:520px;margin:0 auto;padding:34px 22px 60px;text-align:center}
+.wrap{max-width:640px;margin:0 auto;padding:34px 22px 60px}
+.modes{display:inline-flex;gap:6px;background:var(--panel);border:1px solid var(--line);border-radius:30px;padding:5px;margin-bottom:26px}
+.modes button{background:none;border:none;color:var(--muted);font:inherit;padding:9px 18px;border-radius:24px;cursor:pointer}
+.modes button.on{background:var(--accent);color:#3a0c17;font-weight:600}
+.clock{position:relative;width:280px;height:280px;margin:0 auto 26px}
+.clock svg{transform:rotate(-90deg);width:100%;height:100%}
+.track{fill:none;stroke:var(--line);stroke-width:10}
+.prog{fill:none;stroke:var(--accent);stroke-width:10;stroke-linecap:round;stroke-dasharray:565;stroke-dashoffset:0;transition:stroke-dashoffset 1s linear}
+.time{position:absolute;inset:0;display:grid;place-items:center;font-size:3.4rem;font-weight:700;font-variant-numeric:tabular-nums}
+.controls{display:flex;gap:12px;justify-content:center;margin-bottom:36px}
+.btn{font:inherit;background:var(--panel);color:var(--txt);border:1px solid var(--line);padding:13px 28px;border-radius:12px;cursor:pointer;font-weight:600}
+.btn.primary{background:var(--accent);color:#3a0c17;border:none}
+.btn.small{padding:11px 18px}
+.btn:hover{filter:brightness(1.08)}
+.tasks{text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}
+.tasks h3{margin-bottom:14px}
+.addbar{display:flex;gap:8px;margin-bottom:14px}
+.addbar input{flex:1;font:inherit;background:var(--bg);color:var(--txt);border:1px solid var(--line);border-radius:10px;padding:11px 13px}
+.addbar input:focus{outline:2px solid var(--accent)}
+#taskList{list-style:none;display:flex;flex-direction:column;gap:8px}
+#taskList li{display:flex;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:11px 13px}
+#taskList li.done span{text-decoration:line-through;color:var(--muted)}
+#taskList .cb{cursor:pointer}
+#taskList span{flex:1}
+#taskList .x{background:none;border:none;color:var(--muted);cursor:pointer}
+.title{font-size:2rem;letter-spacing:-.5px;margin-bottom:20px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.scard{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;text-align:center}
+.scard b{font-size:2.2rem;color:var(--accent);display:block}
+.scard small{color:var(--muted)}
+.chart{display:flex;align-items:flex-end;gap:10px;height:160px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;margin-top:14px}
+.chart .col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px;height:100%}
+.chart .bar{width:60%;background:linear-gradient(180deg,var(--accent),#e11d48);border-radius:5px 5px 0 0;min-height:3px}
+.chart small{color:var(--muted);font-size:.7rem}
+.prose{color:var(--muted)} .prose h3{color:var(--txt);margin:16px 0 6px} .prose code{background:var(--panel);padding:2px 6px;border-radius:5px}
+.foot{text-align:center;color:var(--muted);padding:28px;font-size:.85rem;border-top:1px solid var(--line)}
+@media(max-width:420px){.clock{width:230px;height:230px}.time{font-size:2.8rem}}
