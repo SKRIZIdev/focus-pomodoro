@@ -15,15 +15,16 @@ function tick() {
   if (left <= 0) { finish(); return; }
   draw();
 }
-function start() { if (running) return; running = true; $('startBtn').textContent = 'Pause'; timer = setInterval(tick, 1000); }
-function pause() { running = false; $('startBtn').textContent = 'Start'; clearInterval(timer); }
+function start() { if (running) return; running = true; $('startBtn').textContent = 'Pause'; $('clock').classList.add('running'); timer = setInterval(tick, 1000); }
+function pause() { running = false; $('startBtn').textContent = 'Start'; $('clock').classList.remove('running'); clearInterval(timer); }
 function stop() { pause(); }
 function finish() {
   pause(); left = 0; draw();
   const isFocus = document.querySelector('#modes button.on').dataset.m === 'focus';
   if (isFocus) logSession(minutes);
   try { new Audio('data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=').play(); } catch (e) {}
-  alert(isFocus ? '🍅 Focus session complete! Take a break.' : 'Break over — back to it!');
+  if (window.UI) UI.alert(isFocus ? 'Nice focus — time for a well-earned break.' : 'Break over — back to it! You\'ve got this.',
+    { title: isFocus ? '🍅 Session complete!' : '⏰ Break finished', ok: 'Got it' });
   left = total; draw();
 }
 function logSession(mins) {
@@ -53,7 +54,7 @@ function renderTasks() {
   $('taskList').querySelectorAll('.cb').forEach(c => c.onchange = () => { const t = loadT(); t[+c.dataset.i].done = c.checked; saveT(t); renderTasks(); });
   $('taskList').querySelectorAll('.x').forEach(x => x.onclick = () => { const t = loadT(); t.splice(+x.dataset.i, 1); saveT(t); renderTasks(); });
 }
-$('addTask').onclick = () => { const v = $('taskInput').value.trim(); if (!v) return; const t = loadT(); t.push({ text: v, done: false }); saveT(t); $('taskInput').value = ''; renderTasks(); };
+$('addTask').onclick = () => { const v = $('taskInput').value.trim(); if (!v) return; const t = loadT(); t.push({ text: v, done: false }); saveT(t); $('taskInput').value = ''; renderTasks(); if (window.UI) UI.toast('Task added', 'success'); };
 $('taskInput').addEventListener('keydown', e => { if (e.key === 'Enter') $('addTask').click(); });
 renderTasks();
 draw();

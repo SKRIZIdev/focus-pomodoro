@@ -46,3 +46,20 @@ nav a:hover,nav a.active{color:var(--accent)}
 .prose{color:var(--muted)} .prose h3{color:var(--txt);margin:16px 0 6px} .prose code{background:var(--panel);padding:2px 6px;border-radius:5px}
 .foot{text-align:center;color:var(--muted);padding:28px;font-size:.85rem;border-top:1px solid var(--line)}
 @media(max-width:420px){.clock{width:230px;height:230px}.time{font-size:2.8rem}}
+
+/* ---- enhancements: animations ---- */
+@keyframes riseIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes clockPulse{0%,100%{box-shadow:0 0 0 0 rgba(251,113,133,0)}50%{box-shadow:0 0 40px 0 rgba(251,113,133,.25)}}
+@keyframes growBar{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+.modes,.clock,.controls,.tasks{opacity:0;animation:riseIn .55s cubic-bezier(.2,.8,.3,1) both}
+.clock{animation-delay:.08s}.controls{animation-delay:.16s}.tasks{animation-delay:.24s}
+.clock{border-radius:50%}
+.clock.running{animation:riseIn .55s ease both,clockPulse 2.4s ease-in-out .55s infinite}
+.modes button{transition:background .25s,color .25s}
+.btn{transition:transform .1s,filter .15s}.btn:active{transform:scale(.95)}
+#taskList li{animation:riseIn .35s ease both;transition:border-color .2s}
+#taskList li:hover{border-color:var(--accent)}
+.scard{opacity:0;animation:riseIn .5s ease both}
+.scard:nth-child(2){animation-delay:.08s}.scard:nth-child(3){animation-delay:.16s}
+.scard b{display:inline-block;transition:transform .2s}.scard:hover b{transform:scale(1.12)}
+.chart .bar{transform-origin:bottom;animation:growBar .6s cubic-bezier(.2,.9,.3,1) both}
